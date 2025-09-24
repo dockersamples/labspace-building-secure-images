@@ -1,6 +1,6 @@
-title: Labspace starter
+title: Scout overview
 description: |
-  A basic template for creating a Labspace, including all of the boilerplate needed to write and publish a Labspace.
+  Learn to build better and more secure container images with Docker Scout
 
 sections:
   - title: Introduction
