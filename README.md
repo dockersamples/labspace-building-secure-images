@@ -1,48 +1,27 @@
-# Labspace starter
+# Labspace - Scout Overview
 
-This repository is intended to server as a template to help bootstrap a new Labspace.
+Once you've learned to build images, the next question is "Did you build a good image?" Is it secure? Is it following best practices?
 
-## Instructions
-
-1. Create a new repository using this repo as the template ([docs here](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)).
-
-    **NOTE:** After creating the repo, a GHA workflow will run to do some additional bootstrapping. The bootstrapping workflow file will be removed during bootstrapping.
-
-2. Clone your newly created repo to your local machine
-
-3. Start the local development mode:
-
-    ```bash
-    # On Mac/Linux
-    CONTENT_PATH=$PWD docker compose -f oci://dockersamples/labspace-content-dev -f .labspace/compose.override.yaml up
-
-    # On Windows with PowerShell
-    $Env:CONTENT_PATH = (Get-Location).Path; docker compose -f oci://dockersamples/labspace-content-dev -f .labspace/compose.override.yaml up
-    ```
-
-4. Update the `labspace.yaml` with your Labspace's title and description
-
-5. Write your Labspace! Being in dev mode, your changes should be visible in the interface without a restart. Feel free to edit either on your host machine or in the Labspace itself!
-
-    Add any supporting application files or resources directly into the Labspace. This repo will be cloned into the Labspace at startup.
-
-    Be sure to check out the [docs](https://github.com/dockersamples/labspace-infra/tree/main/docs) for additional information and guidelines.
+In this Labspace, you'll learn how to use Docker Scout to build more secure images.
 
 
 
-### Setting up the deployment pipeline
+## Learning objectives
 
-The template repo contains a workflow file to make it easy to publish your Labspace.
+By the end of this Labspace, you will have learned the following:
 
-1. Add GitHub Action Secrets in your new repo for the following:
+TBD
 
-    - `DOCKERHUB_USERNAME` - the username to authenticate to Docker Hub with
-    - `DOCKERHUB_TOKEN` - a personal or organization access token to use for authentication
+## Launch the Labspace
 
-2. In the `.github/workflows/publish-labspace.yaml.temp` file, update the `DOCKERHUB_REPO` with the name of the Docker Hub repo you want to publish to.
+To launch the Labspace, run the following command:
 
-3. Rename the workflow file to remove the `.temp` extension.
+```bash
+docker compose -f oci://dockersamples/labspace-scout-overview up -d
+```
 
-    ```bash
-    mv .github/workflows/publish-labspace.yaml.temp .github/workflows/publish-labspace.yaml
-    ```
+And then open your browser to http://localhost:3030.
+
+### Using the Docker Desktop extension
+
+If you have the Labspace extension installed (`docker extension install dockersamples/labspace-extension` if not), you can also [click this link](https://open.docker.com/dashboard/extension-tab?extensionId=dockersamples/labspace-extension&location=dockersamples/labspace-scout-overview&title=Scout%20overview) to launch the Labspace.
