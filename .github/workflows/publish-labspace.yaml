@@ -1,7 +1,7 @@
 name: Package and deploy Labspace
 
 env:
-  DOCKERHUB_REPO: dockersamples/labspace-scout-overview
+  DOCKERHUB_REPO: dockersamples/labspace-building-secure-images
 
 on:
   push:

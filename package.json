@@ -1,0 +1,24 @@
+{
+  "name": "labspace-scout-overview",
+  "version": "1.0.0",
+  "description": "Demo app for the Labspace",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dockersamples/labspace-scout-overview.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/dockersamples/labspace-scout-overview/issues"
+  },
+  "homepage": "https://github.com/dockersamples/labspace-scout-overview#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
