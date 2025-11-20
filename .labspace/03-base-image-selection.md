@@ -17,7 +17,7 @@ Ideally, you want to keep the idea of "least privilege" - include only what's ne
 
 ## 🗺️ Choosing a base image
 
-The current `Dockerfile` has the following base image:
+The project's :fileLink[`Dockerfile`]{path="Dockerfile" line=1} has the following base image:
 
 ```dockerfile
 FROM node:18
