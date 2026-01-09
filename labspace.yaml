@@ -1,3 +1,8 @@
+metadata:
+  id: dockersamples/labspace-building-secure-images
+  sourceRepo: github.com/dockersamples/labspace-building-secure-images
+  contentVersion: abcd123 # Will be replaced during release process
+
 title: Building secure container images
 description: |
   Learn to build better and more secure container images with Docker Scout
