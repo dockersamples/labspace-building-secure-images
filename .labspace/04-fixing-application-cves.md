@@ -64,10 +64,10 @@ As you saw in the previous section, updating base images can resolve a significa
 
 4. Looking back at the output for the express library, you should see that the greatest fix version is `4.20.0`. 
 
-    The `path-to-regexp` library is updated to a fixed version in express version `4.21.2`. Update to this version by running the following command:
+    The `body-parser`, `qs`, `path-to-regexp`, and other libraries libraries are all updated to their latest fixed version in express version `5.2.1`. Update to this version by running the following command:
 
     ```bash
-    npm install express@4.21.2
+    npm install express@5.2.1
     ```
 
 5. Build your image again by running the following command:
@@ -79,16 +79,30 @@ As you saw in the previous section, updating base images can resolve a significa
 6. And run one more analysis on the image:
 
     ```bash
-    docker scout quickview node-app:v3
+    docker scout cves node-app:v3 --ignore-base
     ```
 
     You should see output similar to the following now:
 
     ```plaintext
-      Target             │  node-app:v3   │    0C     0H     1M    24L   
-        digest           │  95f3c9d9a4a2  │                              
-      Base image         │  node:22-slim  │    0C     0H     1M    24L   
-      Updated base image │  node:24-slim  │    0C     0H     1M    24L  
+    ## Overview
+    
+                       │       Analyzed Image        
+    ───────────────────┼─────────────────────────────
+     Target            │  node-app:v3                
+       digest          │  7d346bd387c3               
+       platform        │ linux/arm64                 
+       vulnerabilities │    0C     0H     0M     0L  
+       size            │ 81 MB                       
+       packages        │ 344                         
+                       │                             
+     Base image        │  node:24-slim               
+                       │  9c57900934cd               
+    
+    
+    ## Packages and Vulnerabilities
+    
+      No vulnerable packages detected
     ```
 
-    Hooray! No more CVEs rated critical or high!
+    Hooray! No more CVEs rated critical or high coming from the application!
