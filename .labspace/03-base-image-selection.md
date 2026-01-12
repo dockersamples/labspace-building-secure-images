@@ -33,49 +33,47 @@ Based on the previous analysis, there were several issues. And, Node 18 is no lo
 
     In the output, you will see quite a few options provided to you.
 
-2. As of writing this lab, Node 22 is the current LTS (Long Term Support) release. Scan through the list to find the two Node 22 options:
+2. As of writing this lab, Node 24 is the current LTS (Long Term Support) release. Scan through the list to find the two Node 2 options:
 
     ```plaintext no-copy-button
                   Tag              │                         Details                         │   Pushed    │          Vulnerabilities            
     ───────────────────────────────┼─────────────────────────────────────────────────────────┼─────────────┼─────────────────────────────────────
-       22-slim                     │ Benefits:                                               │ 1 day ago   │    0C     0H     1M    24L          
-      Major runtime version update │ • Image is smaller by 292 MB                            │             │    -2    -20    -21    -85     -4   
-      Also known as:               │ • Image contains 418 fewer packages                     │             │                                     
-      • 22.20.0-slim               │ • Major runtime version update                          │             │                                     
-      • 22.20-slim                 │ • Tag was pushed more recently                          │             │                                     
-      • lts-slim                   │ • Image introduces no new vulnerability but removes 128 │             │                                     
-      • jod-slim                   │ • Tag is using slim variant                             │             │                                     
-      • 22-bookworm-slim           │                                                         │             │                                     
-      • lts-bookworm-slim          │ Image details:                                          │             │                                     
-      • jod-bookworm-slim          │ • Size: 79 MB                                           │             │                                     
-      • 22.20-bookworm-slim        │ • Runtime: 22.20.0                                      │             │                                     
-      • 22.20.0-bookworm-slim      │                                                         │             │                                     
-                                   │                                                         │             │                                         
+       24-slim                     │ Benefits:                                               │ 1 week ago  │    0C     3H     3M    22L         
+      Major runtime version update │ • Image is smaller by 293 MB                            │             │    -2    -31    -31    -81     -4  
+      Also known as:               │ • Image contains 421 fewer packages                     │             │                                    
+      • 24.12.0-slim               │ • Major runtime version update                          │             │                                    
+      • lts-slim                   │ • Tag was pushed more recently                          │             │                                    
+      • krypton-slim               │ • Image introduces no new vulnerability but removes 145 │             │                                    
+      • 24-bookworm-slim           │ • Tag is using slim variant                             │             │                                    
+      • 24.12-bookworm-slim        │                                                         │             │                                    
+      • 24.12.0-bookworm-slim      │ Image details:                                          │             │                                    
+      • krypton-bookworm-slim      │ • Size: 79 MB                                           │             │                                    
+                                   │ • Runtime: 24.12.0                                      |             |
       ...                          │ ...                                                     │ ...         │ ...
                                    │                                                         │             │                                             
-       22                          │ Benefits:                                               │ 1 day ago   │    0C     6H     3M   143L     4?   
-      Major runtime version update │ • Major runtime version update                          │             │    -2    -14    -19    +34          
-      Also known as:               │ • Tag was pushed more recently                          │             │                                     
-      • 22.20.0                    │ • Image has similar size                                │             │                                     
-      • 22.20                      │ • Image contains similar number of packages             │             │                                     
-      • lts                        │                                                         │             │                                     
-      • jod                        │ Image details:                                          │             │                                     
-      • lts-jod                    │ • Size: 399 MB                                          │             │                                     
-      • 22-bookworm                │ • Runtime: 22.20.0                                      │             │                                     
-      • jod-bookworm               │                                                         │             │                                     
-      • lts-bookworm               │                                                         │             │                                     
-      • 22.20-bookworm             │                                                         │             │                                     
-      • 22.20.0-bookworm           │    
+       24                          │ Benefits:                                               │ 1 week ago  │    0C     9H    14M   148L     4?  
+      Major runtime version update │ • Major runtime version update                          │             │    -2    -25    -20    +45         
+      Also known as:               │ • Tag was pushed more recently                          │             │                                    
+      • 24.12.0                    │ • Image has similar size                                │             │                                    
+      • 24.12                      │ • Image contains similar number of packages             │             │                                    
+      • lts                        │                                                         │             │                                    
+      • krypton                    │ Image details:                                          │             │                                    
+      • 24-bookworm                │ • Size: 398 MB                                          │             │                                    
+      • lts-krypton                │ • Runtime: 24.12.0                                      │             │                                    
+      • lts-bookworm               │                                                         │             │                                    
+      • 24.12-bookworm             │                                                         │             │                                    
+      • krypton-bookworm           │                                                         │             │                                    
+      • 24.12.0-bookworm           │                                                         │             │                             
     ```
 
     You will see that one image is significantly smaller than the other (79MB vs 399MB) and includes far fewer packages (about 418 fewer).
 
     With this difference, the `-slim` variant also has far fewer vulnerabilities.
 
-3. In the `Dockerfile`, update the base image to use the `node:22-slim` image:
+3. In the `Dockerfile`, update the base image to use the `node:24-slim` image:
 
     ```dockerfile
-    FROM node:22-slim
+    FROM node:24-slim
     ```
 
 4. Build the image again using the new base image. This time though, you're going to add two additional flags:
@@ -97,11 +95,11 @@ Based on the previous analysis, there were several issues. And, Node 18 is no lo
 
     ```plaintext no-copy-button
     REPOSITORY   TAG       IMAGE ID       CREATED             SIZE
-    node-app     v2        029dbef31e69   2 minutes ago       363MB
+    node-app     v2        029dbef31e69   2 minutes ago       356MB
     node-app     v1        2fcf7b363939   About an hour ago   1.57GB
     ```
 
-    Look at that! **1.57GB shrunk down to 363MB. That's a ~77% smaller image!** 🎉
+    Look at that! **1.57GB shrunk down to 356MB. That's a ~77% smaller image!** 🎉
 
 6. Run another analysis on the image to determine if the problems have been fixed:
 
@@ -117,10 +115,10 @@ Based on the previous analysis, there were several issues. And, Node 18 is no lo
     The output should now show a much better position:
 
     ```plaintext no-copy-button
-    Target             │  node-app:v2   │    0C     5H     2M    28L   
-      digest           │  21616770631b  │                              
-    Base image         │  node:22-slim  │    0C     0H     1M    24L   
-    Updated base image │  node:24-slim  │    0C     0H     1M    24L   
+     Target             │  node-app:v2      │    0C    10H     4M    26L  
+       digest           │  da98126f9ef5     │                             
+     Base image         │  node:24-slim     │    0C     3H     3M    22L  
+     Updated base image │  node:24.12-slim  │    0C     3H     3M    22L  
     ```
 
-    This indicates that there are still a few _high_ vulnerabilities. But, they are no longer coming from our base image. These must have been introduced by the application you packaged into the container image.
+    This indicates that there are still a few _high_ vulnerabilities. Seeing the app has a higher count, this indicates the application itself has introduced some vulnerabilities.
