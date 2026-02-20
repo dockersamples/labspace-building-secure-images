@@ -9,14 +9,14 @@ description: |
 
 sections:
   - title: Introduction
-    contentPath: .labspace/01-introduction.md
+    contentPath: 01-introduction.md
   - title: Analyzing images
-    contentPath: .labspace/02-image-analysis.md
+    contentPath: 02-image-analysis.md
   - title: Base image selection
-    contentPath: .labspace/03-base-image-selection.md
+    contentPath: 03-base-image-selection.md
   - title: Fixing application CVEs
-    contentPath: .labspace/04-fixing-application-cves.md
+    contentPath: 04-fixing-application-cves.md
   - title: Configuring a non-root user
-    contentPath: .labspace/05-non-root-user.md
+    contentPath: 05-non-root-user.md
   - title: Conclusion
-    contentPath: .labspace/06-conclusion.md
+    contentPath: 06-conclusion.md
