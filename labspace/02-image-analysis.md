@@ -42,11 +42,11 @@ This lab already has a `Dockerfile`, so you can easily build the image.
         i Base image was auto-detected. To get more accurate results, build images with max-mode provenance attestations.
         Review docs.docker.com ↗ for more information.
 
-    Target             │  node-app:v1   │    2C    25H    23M   113L     4?   
-      digest           │  2fcf7b363939  │                                     
-    Base image         │  node:18       │    2C    20H    22M   109L     4?   
-    Updated base image │  node:24-slim  │    0C     0H     1M    24L          
-                       │                │    -2    -20    -21    -85     -4   
+       Target             │  node-app:v1   │    2C    64H    82M   177L     4?  
+         digest           │  c24fb5936634  │                                    
+       Base image         │  node:18       │    2C    59H    80M   172L     4?  
+       Updated base image │  node:25-slim  │    0C     4H     1M    10L         
+                          │                │    -2    -55    -79   -162     -4   
     ```
 
     This output tells you that there are a few issues with this image. 

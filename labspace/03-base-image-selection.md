@@ -38,27 +38,27 @@ Based on the previous analysis, there were several issues. And, Node 18 is no lo
     ```plaintext no-copy-button
                   Tag              │                         Details                         │   Pushed    │          Vulnerabilities            
     ───────────────────────────────┼─────────────────────────────────────────────────────────┼─────────────┼─────────────────────────────────────
-       24-slim                     │ Benefits:                                               │ 1 week ago  │    0C     3H     3M    22L         
-      Major runtime version update │ • Image is smaller by 293 MB                            │             │    -2    -31    -31    -81     -4  
+       24-slim                     │ Benefits:                                               │ 1 week ago  │    0C     6H     1M    10L         
+      Major runtime version update │ • Image is smaller by 293 MB                            │             │    -2    -53    -79    -162     -4  
       Also known as:               │ • Image contains 421 fewer packages                     │             │                                    
-      • 24.12.0-slim               │ • Major runtime version update                          │             │                                    
+      • 24.14.0-slim               │ • Major runtime version update                          │             │                                    
       • lts-slim                   │ • Tag was pushed more recently                          │             │                                    
       • krypton-slim               │ • Image introduces no new vulnerability but removes 145 │             │                                    
       • 24-bookworm-slim           │ • Tag is using slim variant                             │             │                                    
-      • 24.12-bookworm-slim        │                                                         │             │                                    
-      • 24.12.0-bookworm-slim      │ Image details:                                          │             │                                    
+      • 24.14-bookworm-slim        │                                                         │             │                                    
+      • 24.14.0-bookworm-slim      │ Image details:                                          │             │                                    
       • krypton-bookworm-slim      │ • Size: 79 MB                                           │             │                                    
-                                   │ • Runtime: 24.12.0                                      |             |
+                                   │ • Runtime: 24.14.0                                      |             |
       ...                          │ ...                                                     │ ...         │ ...
                                    │                                                         │             │                                             
-       24                          │ Benefits:                                               │ 1 week ago  │    0C     9H    14M   148L     4?  
-      Major runtime version update │ • Major runtime version update                          │             │    -2    -25    -20    +45         
+       24                          │ Benefits:                                               │ 1 week ago  │    0C    17H    38M   135L     4?  
+      Major runtime version update │ • Major runtime version update                          │             │    -2    -42    -42    -39         
       Also known as:               │ • Tag was pushed more recently                          │             │                                    
       • 24.12.0                    │ • Image has similar size                                │             │                                    
       • 24.12                      │ • Image contains similar number of packages             │             │                                    
       • lts                        │                                                         │             │                                    
       • krypton                    │ Image details:                                          │             │                                    
-      • 24-bookworm                │ • Size: 398 MB                                          │             │                                    
+      • 24-bookworm                │ • Size: 399 MB                                          │             │                                    
       • lts-krypton                │ • Runtime: 24.12.0                                      │             │                                    
       • lts-bookworm               │                                                         │             │                                    
       • 24.12-bookworm             │                                                         │             │                                    
@@ -94,12 +94,13 @@ Based on the previous analysis, there were several issues. And, Node 18 is no lo
     You should see output similar to the following, showing the image size reduction:
 
     ```plaintext no-copy-button
-    REPOSITORY   TAG       IMAGE ID       CREATED             SIZE
-    node-app     v2        029dbef31e69   2 minutes ago       356MB
-    node-app     v1        2fcf7b363939   About an hour ago   1.57GB
+    IMAGE             ID             DISK USAGE   CONTENT SIZE   EXTRA
+    node-app:latest   88b0e8cb44c6        250MB         55.4MB        
+    node-app:v1       c24fb5936634       1.57GB          387MB        
+    node-app:v2       4dd7e91f4574        355MB         83.7MB 
     ```
 
-    Look at that! **1.57GB shrunk down to 356MB. That's a ~77% smaller image!** 🎉
+    Look at that! When looking at disk usage, **1.57GB shrunk down to 356MB. That's a ~77% smaller image!** 🎉
 
 6. Run another analysis on the image to determine if the problems have been fixed:
 
@@ -115,10 +116,9 @@ Based on the previous analysis, there were several issues. And, Node 18 is no lo
     The output should now show a much better position:
 
     ```plaintext no-copy-button
-     Target             │  node-app:v2      │    0C    10H     4M    26L  
-       digest           │  da98126f9ef5     │                             
-     Base image         │  node:24-slim     │    0C     3H     3M    22L  
-     Updated base image │  node:24.12-slim  │    0C     3H     3M    22L  
+     Target     │  node-app:v2            │    0C    11H     3M    15L  
+       digest   │  e48cbd23da15           │                             
+     Base image │  node:24-bookworm-slim  │    0C     6H     1M    10L  
     ```
 
     This indicates that there are still a few _high_ vulnerabilities. Seeing the app has a higher count, this indicates the application itself has introduced some vulnerabilities.

@@ -94,7 +94,7 @@ As you saw in the previous section, updating base images can resolve a significa
        platform        │ linux/arm64                 
        vulnerabilities │    0C     0H     0M     0L  
        size            │ 81 MB                       
-       packages        │ 344                         
+       packages        │ 312                         
                        │                             
      Base image        │  node:24-slim               
                        │  9c57900934cd               
