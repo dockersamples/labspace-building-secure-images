@@ -25,7 +25,7 @@ As you saw in the previous section, updating base images can resolve a significa
       0C     1H     1M     1L  express 4.17.1
     pkg:npm/express@4.17.1
 
-    Dockerfile (7:7)
+    Dockerfile (5:5)
     COPY . .
 
         ✗ HIGH CVE-2022-24999 [OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities]
@@ -53,7 +53,7 @@ As you saw in the previous section, updating base images can resolve a significa
     A couple of things to note out of this:
 
     - `pkg:npm/express@4.17.1` - this part of the report is related to the NPM package named `express`, which has version 4.17.1
-    - `Dockerfile (7:7)` - the output provides the specific instruction in the Dockerfile that introduced the vulnerability. This is because of the provenance attestation generated during the build
+    - `Dockerfile (5:5)` - the output provides the specific instruction in the Dockerfile that introduced the vulnerability. This is because of the provenance attestation generated during the build
     - CVE details - details about each of the vulnerabilities, including links to get more details
 
 3. You will also see a few vulnerabilities still coming from the base image. To filter those out, add the `--ignore-base` flag:
@@ -94,10 +94,10 @@ As you saw in the previous section, updating base images can resolve a significa
        platform        │ linux/arm64                 
        vulnerabilities │    0C     0H     0M     0L  
        size            │ 81 MB                       
-       packages        │ 312                         
+       packages        │ 296                         
                        │                             
      Base image        │  node:24-slim               
-                       │  9c57900934cd               
+                       │  29c255ae07f8               
     
     
     ## Packages and Vulnerabilities

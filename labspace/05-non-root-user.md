@@ -14,7 +14,7 @@ Some container images already have multiple users configured, although the root 
 1. Run the following command to see what users are configured in the `node:lts-slim` image:
 
     ```bash
-    docker run --rm -ti node:lts-slim cut -d: -f1,3 /etc/passwd
+    docker run --rm -ti node:24-slim cut -d: -f1,3 /etc/passwd
     ```
 
     In the output, you will see all of the usernames and their respective uids:

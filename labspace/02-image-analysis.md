@@ -42,11 +42,11 @@ This lab already has a `Dockerfile`, so you can easily build the image.
         i Base image was auto-detected. To get more accurate results, build images with max-mode provenance attestations.
         Review docs.docker.com ↗ for more information.
 
-       Target             │  node-app:v1   │    2C    64H    82M   177L     4?  
+       Target             │  node-app:v1   │    2C    97H   108M   221L    11?  
          digest           │  c24fb5936634  │                                    
-       Base image         │  node:18       │    2C    59H    80M   172L     4?  
-       Updated base image │  node:25-slim  │    0C     4H     1M    10L         
-                          │                │    -2    -55    -79   -162     -4   
+       Base image         │  node:18       │    2C    97H   106M   216L    11?  
+       Updated base image │  node:26-slim  │    0C     0H     2M    22L         
+                          │                │    -2    -91   -104   -194    -11   
     ```
 
     This output tells you that there are a few issues with this image. 
@@ -67,7 +67,7 @@ This lab already has a `Dockerfile`, so you can easily build the image.
     ─────────┼────────────────────────────────────────────────┼──────────────────────────────
       !      │ No default non-root user found                 │                              
       !      │ AGPL v3 licenses found                         │    4 packages                
-      !      │ Fixable critical or high vulnerabilities found │    2C    24H     0M     0L   
+      !      │ Fixable critical or high vulnerabilities found │    2C    97H     0M     0L   
       ✓      │ No high-profile vulnerabilities                │    0C     0H     0M     0L   
       ?      │ No outdated base images                        │    No data                         
       ?      │ No unapproved base images                      │    No data                   

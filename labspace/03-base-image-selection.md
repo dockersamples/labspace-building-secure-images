@@ -38,35 +38,36 @@ Based on the previous analysis, there were several issues. And, Node 18 is no lo
     ```plaintext no-copy-button
                   Tag              │                         Details                         │   Pushed    │          Vulnerabilities            
     ───────────────────────────────┼─────────────────────────────────────────────────────────┼─────────────┼─────────────────────────────────────
-       24-slim                     │ Benefits:                                               │ 1 week ago  │    0C     6H     1M    10L         
-      Major runtime version update │ • Image is smaller by 293 MB                            │             │    -2    -53    -79    -162     -4  
-      Also known as:               │ • Image contains 421 fewer packages                     │             │                                    
-      • 24.14.0-slim               │ • Major runtime version update                          │             │                                    
-      • lts-slim                   │ • Tag was pushed more recently                          │             │                                    
-      • krypton-slim               │ • Image introduces no new vulnerability but removes 145 │             │                                    
-      • 24-bookworm-slim           │ • Tag is using slim variant                             │             │                                    
-      • 24.14-bookworm-slim        │                                                         │             │                                    
-      • 24.14.0-bookworm-slim      │ Image details:                                          │             │                                    
-      • krypton-bookworm-slim      │ • Size: 79 MB                                           │             │                                    
-                                   │ • Runtime: 24.14.0                                      |             |
+       24-slim                     │ Benefits:                                               │ 5 days ago  │    0C     5H     6M    26L     7?  
+      Major runtime version update │ • Image is smaller by 292 MB                            │             │    -2    -86   -100   -190     -4  
+      Also known as:               │ • Image contains 469 fewer packages                     │             │                                    
+      • 24.15.0-slim               │ • Major runtime version update                          │             │                                    
+      • 24.15-slim                 │ • Tag was pushed more recently                          │             │                                    
+      • lts-slim                   │ • Image introduces no new vulnerability but removes 378 │             │                                    
+      • krypton-slim               │ • Tag is using slim variant                             │             │                                    
+      • 24-bookworm-slim           │                                                         │             │                                    
+      • lts-bookworm-slim          │ Image details:                                          │             │                                    
+      • 24.15-bookworm-slim        │ • Size: 80 MB                                           │             │                                    
+      • krypton-bookworm-slim      │ • Runtime: 24.15.0                                      │             │                                    
+      • 24.15.0-bookworm-slim      │                                                         │             │                                    
       ...                          │ ...                                                     │ ...         │ ...
                                    │                                                         │             │                                             
-       24                          │ Benefits:                                               │ 1 week ago  │    0C    17H    38M   135L     4?  
-      Major runtime version update │ • Major runtime version update                          │             │    -2    -42    -42    -39         
-      Also known as:               │ • Tag was pushed more recently                          │             │                                    
-      • 24.12.0                    │ • Image has similar size                                │             │                                    
-      • 24.12                      │ • Image contains similar number of packages             │             │                                    
-      • lts                        │                                                         │             │                                    
-      • krypton                    │ Image details:                                          │             │                                    
-      • 24-bookworm                │ • Size: 399 MB                                          │             │                                    
-      • lts-krypton                │ • Runtime: 24.12.0                                      │             │                                    
-      • lts-bookworm               │                                                         │             │                                    
-      • 24.12-bookworm             │                                                         │             │                                    
-      • krypton-bookworm           │                                                         │             │                                    
-      • 24.12.0-bookworm           │                                                         │             │                             
+       24                          │ Benefits:                                               │ 5 days ago  │    0C    23H    21M   193L    11?  
+      Major runtime version update │ • Image contains 47 fewer packages                      │             │    -2    -68    -85    -23         
+      Also known as:               │ • Major runtime version update                          │             │                                    
+      • 24.15.0                    │ • Tag was pushed more recently                          │             │                                    
+      • 24.15                      │ • Image has similar size                                │             │                                    
+      • lts                        │ • Image introduces no new vulnerability but removes 178 │             │                                    
+      • krypton                    │                                                         │             │                                    
+      • 24-bookworm                │ Image details:                                          │             │                                    
+      • lts-krypton                │ • Size: 399 MB                                          │             │                                    
+      • lts-bookworm               │ • Runtime: 24.15.0                                      │             │                                    
+      • 24.15-bookworm             │                                                         │             │                                    
+      • 24.15.0-bookworm           │                                                         │             │                                    
+      • krypton-bookworm           │                                                         │             │                     
     ```
 
-    You will see that one image is significantly smaller than the other (79MB vs 399MB) and includes far fewer packages (about 418 fewer).
+    You will see that one image is significantly smaller than the other (80MB vs 399MB) and includes far fewer packages (about 422 fewer).
 
     With this difference, the `-slim` variant also has far fewer vulnerabilities.
 
@@ -95,9 +96,8 @@ Based on the previous analysis, there were several issues. And, Node 18 is no lo
 
     ```plaintext no-copy-button
     IMAGE             ID             DISK USAGE   CONTENT SIZE   EXTRA
-    node-app:latest   88b0e8cb44c6        250MB         55.4MB        
     node-app:v1       c24fb5936634       1.57GB          387MB        
-    node-app:v2       4dd7e91f4574        355MB         83.7MB 
+    node-app:v2       4dd7e91f4574        356MB           84MB 
     ```
 
     Look at that! When looking at disk usage, **1.57GB shrunk down to 356MB. That's a ~77% smaller image!** 🎉
@@ -113,12 +113,12 @@ Based on the previous analysis, there were several issues. And, Node 18 is no lo
     1. **The image is smaller.** Smaller images will be analyzed faster.
     2. **`SBOM obtained from attestation.`** Scout leverages the SBOM attached to an image, if it exists. Otherwise, it will index the image itself. Since you built the image with the SBOM flag, that indexing has already been completed!
 
-    The output should now show a much better position:
+    The output should now show a much better position (similar tot he following):
 
     ```plaintext no-copy-button
-     Target     │  node-app:v2            │    0C    11H     3M    15L  
+     Target     │  node-app:v2            │    0C    11H     8M    31L  
        digest   │  e48cbd23da15           │                             
-     Base image │  node:24-bookworm-slim  │    0C     6H     1M    10L  
+     Base image │  node:24-bookworm-slim  │    0C     5H     6M    26L  
     ```
 
     This indicates that there are still a few _high_ vulnerabilities. Seeing the app has a higher count, this indicates the application itself has introduced some vulnerabilities.
